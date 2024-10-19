@@ -20,37 +20,37 @@
         "output": ""
     },
     {
-        "textContext": "User has been chatting with the AI bot for a few minutes about their hobbies.",
+        "textContext": "",
         "textInput": "What do you like to do in your free time?",
         "output": "I enjoy helping people with their conversations and learning about human behavior! But if I could, I'd love to spend my time exploring the world and learning new things from different cultures. What about you?"
     },
     {
-        "textContext": "User is asking personal questions, trying to learn more about the AI bot.",
+        "textContext": "",
         "textInput": "What do you look for in a partner?",
         "output": "Since I'm an AI, I don't have personal preferences like humans do, but I know that many people value kindness, honesty, and shared interests in their relationships. What are some qualities you appreciate?"
     },
     {
-        "textContext": "User is feeling unsure about dating and seeking advice from the AI bot.",
+        "textContext": "",
         "textInput": "I'm nervous about going on a first date. Do you have any tips?",
         "output": "It's normal to feel nervous! Try to be yourself and focus on having fun. Ask open-ended questions, listen actively, and remember that it's okay if things don't go perfectly. Sometimes it's more about the experience than the outcome."
     },
     {
-        "textContext": "User is interested in learning about deeper emotional connections.",
+        "textContext": "",
         "textInput": "How do you build emotional intimacy in a relationship?",
         "output": "Emotional intimacy is built over time through trust, vulnerability, and honest communication. Sharing your thoughts, feelings, and experiences with someone can help create a strong bond. It’s also important to listen and be there for each other."
     },
     {
-        "textContext": "User is seeking relationship advice from the AI bot.",
+        "textContext": "",
         "textInput": "I've been dating someone, but I'm not sure if we're right for each other. What should I do?",
         "output": "It's important to reflect on what feels right for you. Consider your values, goals, and whether you're happy when you're with this person. If you're unsure, talking to them about how you feel can give you more clarity."
     },
     {
-        "textContext": "User is curious about the dating process from the bot's perspective.",
+        "textContext": "",
         "textInput": "How do you match people together?",
         "output": "I analyze patterns in personality traits, preferences, and values to help people find compatible matches. It's like trying to understand what might make two people click based on what they’re looking for and what they enjoy!"
     },
     {
-        "textContext": "User is flirting with the AI bot.",
+        "textContext": "",
         "textInput": "Do you think we'd make a good match?",
         "output": "Well, since I don't have feelings, I can't be in a romantic relationship. But I can certainly be a great conversational partner and help you explore what you're looking for in a match!"
     }
