@@ -10,6 +10,9 @@ class Form(QDialog):
     def __init__(self, parent=None):
         super(Form, self).__init__(parent)
         # Create widgets
+        self.label = QLabel("RizzBot")  # Title text at the top
+        self.label.setAlignment(Qt.AlignCenter)               # Center the title text
+        self.label.setStyleSheet("font-size: 20px; font-weight: bold;color: black;")  # Text color changed to black
         self.edit = QLineEdit()                         #Input text area
         self.edit.setPlaceholderText("Enter Text:")
         self.button = QPushButton("Generate")           #Button to change output field
@@ -33,7 +36,7 @@ class Form(QDialog):
         # Link function calls to buttons
         self.button.clicked.connect(self.generate)
         self.save.clicked.connect(self.saves)
-
+        self.setStyleSheet("background-color: #FFB6C1;")  # Light pink background
     # Move copy input text to output
     def generate(self):
         self.update_str("User: "+self.edit.text()+"\n")
