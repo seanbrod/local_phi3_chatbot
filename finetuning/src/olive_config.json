@@ -1,10 +1,10 @@
 {
     "$schema": "https://microsoft.github.io/Olive/schema.json",
     "input_model":{
-        "type": "PyTorchModel",
+        "type": "PyTorchModelHandler",
         "config": {
             "hf_config": {
-                "model_name": "microsoft/Phi-3-mini-4k-instruct",
+                "model_name": "finetuning/models/baseModels/",
                 "task": "text-generation",
                 "from_pretrained_args": {
                     "trust_remote_code": true
@@ -33,13 +33,13 @@
             "type": "HuggingfaceContainer",
             "params_config": {
                 "data_name": "json", 
-                "data_files":"dataset/dataset-classification.json",
+                "data_files":"finetuning/data/dataset01.json",
                 "split": "train",
                 "component_kwargs": {
                     "pre_process_data": {
                         "dataset_type": "corpus",
-                        "text_cols": ["phrase","tone"],
-                        "text_template": "<|user|>\n{phrase}<|end|>\n<|assistant|>\n{tone}<|end|>",
+                        "text_cols": ["textContext","textInput", "output"],
+                        "text_template": "<|system|>\n<|end|>\n<|user|>\nContext conversation:\n{textContext}\nMost recent user question:\n{textInput}<|end|>\n<|assistant|>\n{output}<|end|>",
                         "corpus_strategy": "join",
                         "source_max_len": 2048,
                         "pad_to_max_len": false,
@@ -105,12 +105,11 @@
     }
     },
     "pass_flows": [
-  ["onnx_conversion", "onnx_optimization"],
-  ["onnx_conversion", "onnx_quantization"]
+  ["lora", "merge", "mb", "onnx_optimization"]
 ]
 ,
     "engine": {
         "cache_dir": "cache",
-        "output_dir": "models"
+        "output_dir": "finetuning/models/tunedModels"
     }
 }

@@ -4,7 +4,7 @@ import onnxruntime_genai as og
 import os
 
 
-model = og.Model('model') #accuracy level 4 phi3 mini 128K cpu model
+model = og.Model('local_phi3_chatbot\model') #accuracy level 4 phi3 mini 128K cpu model
 tokenizer = og.Tokenizer(model)
 tokenizer_stream = tokenizer.create_stream()
  
