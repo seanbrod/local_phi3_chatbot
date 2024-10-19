@@ -85,8 +85,50 @@
             "config": {
                 "precision": "int4"
             }
+        },
+        "onnx_conversion": {
+            "type": "OnnxConversion",
+            "target_opset": 15 
+        },
+        "onnx_optimization": {
+        "type": "OnnxOptimization",
+        "config": {
+            "optimization_level": "all"
         }
     },
+        "onnx_quantization": {
+        "type": "OnnxQuantization",
+        "config": {
+            "quantization_method": "dynamic",
+            "weight_type": "int8"
+        }
+    }
+    },
+    "pass_flows": [
+  {
+    "name": "onnx_flow",
+    "passes": [
+      {
+        "pass_name": "lora"
+      },
+      {
+        "pass_name": "merge"
+      },
+      {
+        "pass_name": "mb"
+      },
+      {
+        "pass_name": "onnx_conversion"
+      },
+      {
+        "pass_name": "onnx_optimization"
+      },
+      {
+        "pass_name": "onnx_quantization"
+      }
+    ]
+  }
+],
     "engine": {
         "cache_dir": "cache",
         "output_dir": "models",
