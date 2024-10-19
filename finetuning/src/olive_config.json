@@ -41,7 +41,7 @@
                         "text_cols": ["phrase","tone"],
                         "text_template": "<|user|>\n{phrase}<|end|>\n<|assistant|>\n{tone}<|end|>",
                         "corpus_strategy": "join",
-                        "source_max_len": 1024,
+                        "source_max_len": 2048,
                         "pad_to_max_len": false,
                         "use_attention_mask": false
                     }
