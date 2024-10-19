@@ -109,34 +109,12 @@
     }
     },
     "pass_flows": [
-  {
-    "name": "onnx_flow",
-    "passes": [
-      {
-        "pass_name": "lora"
-      },
-      {
-        "pass_name": "merge"
-      },
-      {
-        "pass_name": "mb"
-      },
-      {
-        "pass_name": "onnx_conversion"
-      },
-      {
-        "pass_name": "onnx_optimization"
-      },
-      {
-        "pass_name": "onnx_quantization"
-      }
-    ]
-  }
-],
+  ["onnx_conversion", "onnx_optimization"],
+  ["onnx_conversion", "onnx_quantization"]
+]
+,
     "engine": {
         "cache_dir": "cache",
-        "output_dir": "models",
-        "host": "local_system",
-        "target": "local_system"
+        "output_dir": "models"
     }
 }
