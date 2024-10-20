@@ -1,0 +1,185 @@
+{
+    "workflow_id": "default_workflow",
+    "azureml_client": null,
+    "input_model": {
+        "type": "hfmodel",
+        "config": {
+            "model_path": "microsoft/phi-3-mini-128k-instruct"
+        }
+    },
+    "systems": {
+        "local_system": {
+            "type": "LocalSystem",
+            "config": {
+                "accelerators": [
+                    {
+                        "device": "gpu",
+                        "execution_providers": [
+                            "CUDAExecutionProvider"
+                        ]
+                    }
+                ],
+                "hf_token": null
+            }
+        }
+    },
+    "data_configs": [
+        {
+            "name": "dataset_default_train",
+            "type": "datacontainer",
+            "user_script": null,
+            "script_dir": null,
+            "load_dataset_config": {
+                "type": "default_load_dataset",
+                "params": {}
+            },
+            "pre_process_data_config": {
+                "type": "default_pre_process_data",
+                "params": {}
+            },
+            "post_process_data_config": {
+                "type": "default_post_process_data",
+                "params": {}
+            },
+            "dataloader_config": {
+                "type": "default_dataloader",
+                "params": {
+                    "batch_size": 1
+                }
+            }
+        }
+    ],
+    "evaluators": null,
+    "engine": {
+        "search_strategy": null,
+        "host": null,
+        "target": null,
+        "evaluator": null,
+        "plot_pareto_frontier": false,
+        "evaluate_input_model": true,
+        "output_dir": "C:\\Users\\smbro\\repos\\local_phi3_chatbot\\finetuning\\src\\finetuning\\models\\tunedModel",
+        "packaging_config": null,
+        "cache_config": null,
+        "cache_dir": "cache",
+        "clean_cache": false,
+        "clean_evaluation_cache": false,
+        "enable_shared_cache": false,
+        "log_severity_level": 1,
+        "ort_log_severity_level": 3,
+        "ort_py_log_severity_level": 3,
+        "log_to_file": false
+    },
+    "passes": {
+        "lora": {
+            "type": "lora",
+            "disable_search": true,
+            "config": {
+                "target_modules": [
+                    "o_proj",
+                    "qkv_proj"
+                ],
+                "lora_r": 64,
+                "lora_alpha": 64,
+                "lora_dropout": 0.1,
+                "train_data_config": {
+                    "name": "dataset_default_train",
+                    "type": "datacontainer",
+                    "user_script": null,
+                    "script_dir": null,
+                    "load_dataset_config": {
+                        "type": "default_load_dataset",
+                        "params": {}
+                    },
+                    "pre_process_data_config": {
+                        "type": "default_pre_process_data",
+                        "params": {}
+                    },
+                    "post_process_data_config": {
+                        "type": "default_post_process_data",
+                        "params": {}
+                    },
+                    "dataloader_config": {
+                        "type": "default_dataloader",
+                        "params": {
+                            "batch_size": 1
+                        }
+                    }
+                },
+                "eval_dataset_size": 0.3,
+                "training_args": {
+                    "seed": 0,
+                    "data_seed": 42,
+                    "per_device_train_batch_size": 1,
+                    "per_device_eval_batch_size": 1,
+                    "gradient_accumulation_steps": 4,
+                    "gradient_checkpointing": false,
+                    "learning_rate": 0.0001,
+                    "max_steps": 150,
+                    "evaluation_strategy": "steps",
+                    "adam_beta2": 0.999,
+                    "max_grad_norm": 0.3
+                }
+            },
+            "host": null,
+            "evaluator": null
+        },
+        "merge": {
+            "type": "mergeadapterweights",
+            "disable_search": true,
+            "config": null,
+            "host": null,
+            "evaluator": null
+        },
+        "mb": {
+            "type": "modelbuilder",
+            "disable_search": true,
+            "config": {
+                "precision": "int4"
+            },
+            "host": null,
+            "evaluator": null
+        },
+        "onnx_conversion": {
+            "type": "onnxconversion",
+            "disable_search": true,
+            "config": {
+                "target_opset": 13
+            },
+            "host": null,
+            "evaluator": null
+        },
+        "onnx_optimization": {
+            "type": "onnxoptimization",
+            "disable_search": true,
+            "config": {
+                "optimization_level": "all"
+            },
+            "host": null,
+            "evaluator": null
+        },
+        "onnx_quantization": {
+            "type": "onnxquantization",
+            "disable_search": true,
+            "config": {
+                "quantization_method": "dynamic",
+                "weight_type": "int8"
+            },
+            "host": null,
+            "evaluator": null
+        }
+    },
+    "pass_flows": [
+        [
+            "lora",
+            "merge",
+            "mb"
+        ]
+    ],
+    "auto_optimizer_config": {
+        "opt_level": 0,
+        "disable_auto_optimizer": false,
+        "precisions": null,
+        "excluded_passes": null
+    },
+    "workflow_host": null
+}

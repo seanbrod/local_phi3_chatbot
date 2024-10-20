@@ -1,15 +1,8 @@
 {
-    "$schema": "https://microsoft.github.io/Olive/schema.json",
     "input_model":{
-        "type": "PyTorchModelHandler",
+        "type": "HFModel",
         "config": {
-            "hf_config": {
-                "model_name": "finetuning/models/baseModel",
-                "task": "text-generation",
-                "from_pretrained_args": {
-                    "trust_remote_code": true
-                }
-            }
+            "model_path": "microsoft/phi-3-mini-128k-instruct"
         }
     },
     "systems": {
@@ -30,7 +23,7 @@
     "data_configs": [
         {
             "name": "dataset_default_train",
-            "type": "HuggingfaceContainer",
+            "type": "DataContainer",
             "params_config": {
                 "data_name": "json", 
                 "data_files":"finetuning/data/dataset01.json",
@@ -88,7 +81,7 @@
         },
         "onnx_conversion": {
             "type": "OnnxConversion",
-            "target_opset": 15 
+            "target_opset": 13
         },
         "onnx_optimization": {
         "type": "OnnxOptimization",
@@ -105,7 +98,7 @@
     }
     },
     "pass_flows": [
-  ["lora", "merge", "mb", "onnx_optimization"]
+  ["lora", "merge", "mb"]
 ]
 ,
     "engine": {
