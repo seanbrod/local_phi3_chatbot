@@ -4,7 +4,7 @@
         "type": "PyTorchModelHandler",
         "config": {
             "hf_config": {
-                "model_name": "finetuning/models/baseModels/",
+                "model_name": "finetuning/models/baseModel",
                 "task": "text-generation",
                 "from_pretrained_args": {
                     "trust_remote_code": true
@@ -110,6 +110,6 @@
 ,
     "engine": {
         "cache_dir": "cache",
-        "output_dir": "finetuning/models/tunedModels"
+        "output_dir": "finetuning/models/tunedModel"
     }
 }

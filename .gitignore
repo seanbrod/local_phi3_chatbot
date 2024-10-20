@@ -1,3 +1,4 @@
 #ignore models
 *.onnx
 *.data
+*.safetensors
