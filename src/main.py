@@ -14,7 +14,7 @@ class Form(QDialog):
         # Create widgets
 
         # Title label
-        self.label = QLabel("RizzBot")  # Title text at the top
+        self.label = QLabel("Friend")  # Title text at the top
         self.label.setAlignment(Qt.AlignCenter)  # Center the title text
         self.label.setStyleSheet("color: black;")
 
@@ -74,15 +74,15 @@ class Form(QDialog):
         # Link function calls to buttons
         self.button.clicked.connect(self.generate)
         self.save.clicked.connect(self.saves)
-        self.setStyleSheet("background-color: #FFB6C1;")  # Light pink background
+        self.setStyleSheet("background-color: #87CEEB;")  # Light pink background
     
     # Move copy input text to output
     def generate(self):
         self.update_str("\n" + "You: " + '"' + self.edit.text() + '"'+ "\n")
         self.update_str('-----------------------------------------------------------------------------------------------')
-        self.update_str("\n" +"RizzBot: ")
+        self.update_str("\n" +"Friend: ")
         generation(self, self.edit.text()) 
-        self.update_str("\n" + 'Let me know if you want more Rizz' + "\n")
+        self.update_str("\n" + 'Im always here for you' + "\n")
         self.update_str('-----------------------------------------------------------------------------------------------')
         self.edit.clear()
 
