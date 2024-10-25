@@ -2,3 +2,6 @@
 *.onnx
 *.data
 *.safetensors
+
+#files
+dataset01.json

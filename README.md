@@ -1,0 +1,15 @@
+# Locally Ran PHI-3 mini 128K application
+
+This application is a locally ran chatbot using a microsoft PHI-3 mini SLM. It includes a frontend using Pyside6, a backend using a ONNX PHI-3 model, and finetuning using Olive.
+
+## Application
+Breakdown of the application side.
+
+### Frontend
+Pyside6 GUI that calls in the generation method from the back.py file. The generate function does all the work. Everything else can be modified. 
+
+### Backend
+ONNX runtime and ONNX AI is sued to run a loop that takes in user input and combines it with past responses for the RAG. Sends each token back to GUI as generated. 
+
+## Finetuning
+Use Micorsofts Olive to finetune the model on a custom dataset. The template is included.
