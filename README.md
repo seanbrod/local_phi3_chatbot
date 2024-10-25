@@ -19,3 +19,8 @@ You can get the full pretrained model from [here](https://huggingface.co/microso
 
 ## Finetuning
 Use Micorsofts Olive to finetune the model on a custom dataset. The template is included.
+
+Does the following:
+- Finetune model on custom dataset using LoRA
+- Convert model to ONNX model and adds new weights from LoRA
+- Optimize ONNX model
